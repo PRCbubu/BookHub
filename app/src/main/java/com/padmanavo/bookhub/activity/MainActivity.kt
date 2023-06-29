@@ -1,5 +1,6 @@
 package com.padmanavo.bookhub.activity
 
+import android.app.Activity
 import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -103,8 +105,9 @@ class MainActivity : AppCompatActivity()
                         else -> {
                             // Show a dialog asking the user if they want to exit the app
                             AlertDialog.Builder(this@MainActivity)
+                                .setTitle("Exit?")
                                 .setMessage("Are you sure you want to exit?")
-                                .setPositiveButton("Yes") { _, _ -> finish() }
+                                .setPositiveButton("Yes") { _, _ -> ActivityCompat.finishAffinity(this@MainActivity) }
                                 .setNegativeButton("No", null)
                                 .show()
                             // Check if the back button was pressed twice within 2 seconds
