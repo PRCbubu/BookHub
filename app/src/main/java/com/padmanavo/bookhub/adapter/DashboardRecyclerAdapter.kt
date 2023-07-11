@@ -1,6 +1,7 @@
 package com.padmanavo.bookhub.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 import androidx.recyclerview.widget.RecyclerView
+import com.padmanavo.bookhub.DescriptionActivity
 import com.padmanavo.bookhub.R
 import com.padmanavo.bookhub.model.Manga
 import com.squareup.picasso.Picasso
@@ -31,7 +33,7 @@ class DashboardRecyclerAdapter(private val context: Context, private val manga: 
         holder.txtRecyclerRowItemRating.text = manga.bookRatings
 
         holder.llContent.setOnClickListener{
-            Toast.makeText(context, "Clicked on ${holder.txtRecyclerRowItem.text}", Toast.LENGTH_SHORT).show()
+            context.startActivity(Intent(context, DescriptionActivity::class.java).putExtra("book_id", manga.bookId))
         }
     }
 

@@ -33,7 +33,6 @@ import org.json.JSONException
     private lateinit var recyclerDashboard: RecyclerView
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var recyclerAdapter: DashboardRecyclerAdapter
-    lateinit var button:Button
     lateinit var manga: ArrayList<Manga>
     lateinit var progressLayout: RelativeLayout
     lateinit var progressBar: ProgressBar
@@ -98,7 +97,8 @@ import org.json.JSONException
                     Toast.makeText(activity as Context, "Some unexpected error occurred", Toast.LENGTH_SHORT).show()
                 }
             }, Response.ErrorListener {
-                Toast.makeText(activity as Context, "Volley error occurred!!!", Toast.LENGTH_SHORT).show()
+                if(activity!=null)
+                    Toast.makeText(activity as Context, "Volley error occurred!!!", Toast.LENGTH_SHORT).show()
             })
             {
                 override fun getHeaders(): MutableMap<String, String>
